@@ -16,7 +16,13 @@ pip install webdriver_manager
 ## Usage
 
 ```bash
+python3 main.py
 enter username: Your codeyad Username
 enter password: your codeyad Password
 enter course_url: your Course Url
 ```
+
+```bash
+python3 download.py
+```
+خودکار تمامی فایل های json دزیافت ، و دانلود را انجام می دهد.
