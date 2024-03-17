@@ -1,6 +1,7 @@
 from glob import glob
 from json import loads
-from os import system,makedirs
+from os import makedirs,path
+from requests import get
 
 json_files = glob('./*.json')
 json_list = None
@@ -11,19 +12,38 @@ for json_file in json_files:
 
         
         file_name = json_file.replace('./','').replace('|',' ').split('.')
-        course_name = file_name[0].replace(' ','_').replace('(','_').replace(')','_')
+        course_name = file_name[0]
         counter = 0
-        makedirs(course_name)
+
+        if not path.isdir(course_name):
+            makedirs(course_name)
 
         for json_data in json_list:
-            dir_name = json_data['name'].replace(' ','_').replace('(','_').replace(')','_')
+            dir_name = json_data['name']
 
-            makedirs(course_name +'/'+ dir_name)
+            if not path.isdir(course_name +'/'+ dir_name):
+                makedirs(course_name +'/'+ dir_name)
 
             for url in json_data['urls']:
-                name = url['name'].replace(' ','_').replace('(','_').replace(')','_')
-                system('curl --output ./' + course_name + '/'+dir_name+'/'+ str(counter) + '_' + name + '.mp4 ' + url['url'])
+                name = url['name']
+
+                if(path.isfile(course_name + '/'+dir_name+'/'+ str(counter) + '_' + name + '.mp4')):
+                    print('skip: ' + name )
+                    counter+= 1
+                    continue
+                
                 counter += 1
+
+                download_video = get(url['url'])
+
+                file = open('./' + course_name + '/'+dir_name+'/'+ str(counter) + '_' + name + '.mp4','wb')
+                file.write(download_video.content)
+                file.close()
+
+                print(name + ' downloaded')
+
+        print('*' * 150)
+        print(course_name)
 
 
                 
