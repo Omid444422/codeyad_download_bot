@@ -22,21 +22,33 @@ course_data = list()
 
 sleep(5)
 
-close_ad_button = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[4]/div/div/div[2]/div/div/button')
-close_ad_button.click()
+try:
+    close_ad_button = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[4]/div/div/div[2]/div/div/button')
+    close_ad_button.click()
+
+except:
+    pass
+
+try:
+    close_new_year_ad_button = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[5]/div/div/div[2]/div/div/button')
+    close_new_year_ad_button.click()
+except:
+    pass
+
+sleep(2)
 
 btn_login = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[2]/header/div/section[1]/div[2]/button')
 btn_login.click()
 
-sleep(1)
+sleep(2)
 
-email_input = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[4]/div/div/div[2]/div/div/form/div[1]/div/input')
+email_input = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[5]/div/div/div[2]/div/div/form/div[1]/div/input')
 email_input.send_keys(username)
 
-password_input = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[4]/div/div/div[2]/div/div/form/div[2]/div/input')
+password_input = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[5]/div/div/div[2]/div/div/form/div[2]/div/input')
 password_input.send_keys(password)
 
-submit_login_btn = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[4]/div/div/div[2]/div/div/form/button[2]')
+submit_login_btn = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[5]/div/div/div[2]/div/div/form/button[2]')
 submit_login_btn.click()
 
 sleep(1)
