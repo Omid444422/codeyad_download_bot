@@ -51,7 +51,7 @@ password_input.send_keys(password)
 submit_login_btn = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[5]/div/div/div[2]/div/div/form/button[2]')
 submit_login_btn.click()
 
-sleep(1)
+sleep(3)
 
 
 driver.get(course_url)
@@ -109,9 +109,12 @@ for counter,content in enumerate(season_content):
         sleep(2)
 
         episode_name = episode.find_element(By.XPATH,'.//a/p').text
+        try:
             
-        episode_download_button = episode.find_element(By.XPATH,'.//button[1]')
-        episode_download_button.click()
+            episode_download_button = episode.find_element(By.XPATH,'.//button[1]')
+            episode_download_button.click()
+        except:
+            continue
 
         sleep(2)
 
