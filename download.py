@@ -15,6 +15,8 @@ for json_file in json_files:
         course_name = file_name[0]
         counter = 0
 
+        print(course_name)
+
         if not path.isdir(course_name):
             makedirs(course_name)
 
@@ -27,13 +29,13 @@ for json_file in json_files:
             for url in json_data['urls']:
                 name = url['name']
 
-                if(path.isfile(course_name + '/'+dir_name+'/'+ str(counter) + '_' + name + '.mp4')):
-                    print('skip: ' + name )
-                    counter+= 1
-                    continue
-                
                 counter += 1
 
+                if(path.isfile(course_name + '/'+dir_name+'/'+ str(counter) + '_' + name + '.mp4')):
+                    print('skip: ' + name )
+                    print('current number: ' + str(counter))
+                    continue
+                
                 download_video = get(url['url'])
 
                 file = open('./' + course_name + '/'+dir_name+'/'+ str(counter) + '_' + name + '.mp4','wb')
