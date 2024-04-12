@@ -21,8 +21,8 @@ enter username: Your codeyad Username
 enter password: your codeyad Password
 enter course_url: your Course Url
 ```
-
+پس از اتمام فایل main.py اطلاعات در فایل json ذخیره می شوند ، سپس فایل download.py ران می کنیم تا اطلاعات از فایل json دریافت و دانلود انجام بدهد.
 ```bash
 python3 download.py
 ```
-خودکار تمامی فایل های json دزیافت ، و دانلود را انجام می دهد.
+خودکار تمامی فایل های json دریافت ، و دانلود را انجام می دهد.
