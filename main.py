@@ -58,6 +58,12 @@ driver.get(course_url)
 
 sleep(5)
 
+try:
+    close_pwa_ad_button = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[4]/div[1]/div[2]/button[1]')
+    close_pwa_ad_button.click()
+except:
+    pass
+
 course_name = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[2]/main/div/aside/h1').text
 
 course_seasons = driver.find_elements(By.CSS_SELECTOR,'div.head.items-center')
