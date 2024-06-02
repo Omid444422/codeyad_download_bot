@@ -127,8 +127,11 @@ for counter,content in enumerate(season_content):
 
         sleep(2)
 
-        driver.switch_to.window(driver.window_handles[1])
-            
+        try:
+            driver.switch_to.window(driver.window_handles[1])
+        except:
+            continue
+        
         episode_url = driver.current_url
 
         driver.close()
