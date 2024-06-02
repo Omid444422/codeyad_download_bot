@@ -62,16 +62,16 @@ course_name = driver.find_element(By.XPATH,'//*[@id="__nuxt"]/div/div[2]/main/di
 
 course_seasons = driver.find_elements(By.CSS_SELECTOR,'div.head.items-center')
 
-for single_season in course_seasons:
+for index,single_season in enumerate(course_seasons):
         season_data = {'name':None,'urls':list()}
 
-        driver.execute_script("arguments[0].scrollIntoView();", single_season)
-        sleep(2)
+        if index > 0:
+            driver.execute_script("arguments[0].scrollIntoView();", single_season)
+            sleep(2)
 
         single_season.click()
 
         sleep(2)
-
 
         season_name = single_season.find_element(By.XPATH,'.//p').text
 
@@ -90,6 +90,9 @@ for counter,content in enumerate(season_content):
 
     for episode in episodes:
         episode_data = {'name':None,'url':None}
+
+        driver.execute_script("arguments[0].scrollIntoView();", episode)
+        sleep(2)
 
         episode.click()
 
