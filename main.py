@@ -129,12 +129,11 @@ for counter,content in enumerate(season_content):
 
         try:
             driver.switch_to.window(driver.window_handles[1])
-        except:
-            continue
-        
-        episode_url = driver.current_url
+            episode_url = driver.current_url
 
-        driver.close()
+            driver.close()
+        except:
+            pass
 
         driver.switch_to.window(driver.window_handles[0])
 
@@ -153,7 +152,9 @@ print(course_data)
 
 course_data_json = dumps(course_data,ensure_ascii=False)
 
-with open(f'{course_name}.json','w',encoding='utf-8') as course_json_file:
+windows_valid_course_name = course_name.replace('/',' ').replace('|',' ').replace('"',' ')
+
+with open(str(windows_valid_course_name)+'.json','w',encoding='utf-8') as course_json_file:
      course_json_file.write(course_data_json)
 
 print('ended successfull')

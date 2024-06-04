@@ -21,7 +21,7 @@ for json_file in json_files:
             makedirs(course_name)
 
         for json_data in json_list:
-            dir_name = json_data['name']
+            dir_name = json_data['name'].replace(':',' ').replace('|',' ')
 
             if not path.isdir(course_name +'\\'+ dir_name):
                 makedirs(course_name +'\\'+ dir_name)
