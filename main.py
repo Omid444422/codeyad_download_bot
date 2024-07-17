@@ -99,9 +99,12 @@ for counter,content in enumerate(season_content):
 
         driver.execute_script("arguments[0].scrollIntoView();", episode)
         sleep(2)
-
-        episode.click()
-
+        
+        try:
+            episode.click()
+        except:
+            pass
+        
         sleep(2)
 
         try:
